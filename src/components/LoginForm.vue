@@ -36,74 +36,14 @@ const googleLogin = async () => {
 </script>
 
 <template>
-    <v-card
-        class="mx-auto"
-        max-width="600"
-        width="600"
-        outlined
-        elevation="5"
-        flex-column
-        align-center
-        justify-center
-    >
-        <v-card-title class="d-flex justify-center">
-            <h2>{{ appTitle }}</h2>
-        </v-card-title>
-        <v-card-text>
-            <v-row>
-                <v-col>
-                    <v-alert v-if="error" type="error">
-                        {{ error }}
-                    </v-alert>
-                </v-col>
-            </v-row>
-
-            <v-row>
-                <v-col
-                    cols="12"
-                    md="6"
-                    offset-md="3"
-                    class="d-flex justify-center"
-                >
-                    <v-btn
-                        @click="googleLogin"
-                        color="primary"
-                        prepend-icon="mdi-google"
-                    >
-                        Continue with Google
-                    </v-btn>
-                </v-col>
-            </v-row>
-
-            <!-- <form action="#" @submit.prevent="login">
-                <v-text-field
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    required
-                    autofocus
-                    v-model="email"
-                    label="Email"
-                />
-
-                <v-text-field
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    required
-                    v-model="password"
-                    label="Password"
-                />
-
-                <v-btn type="submit" color="primary" @submit="login"
-                    >Login</v-btn
-                >
-                <v-btn type="submit" @click="router.push('/register')"
-                    >Register</v-btn
-                >
-            </form> -->
-        </v-card-text>
-    </v-card>
+    <div class="">
+        <div class="flex-col border p-5">
+            <button
+                @click="googleLogin"
+                class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            >
+                Continue with Google
+            </button>
+        </div>
+    </div>
 </template>
