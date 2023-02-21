@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { firebaseAuth } from '../data/firebaseConfig'
+import { auth } from '../data/firebaseConfig'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import router from '../routes'
 
@@ -28,14 +28,14 @@ export const useAuthStore = defineStore({
         },
         async googleRegister() {
             const provider = new GoogleAuthProvider()
-            const response = await signInWithPopup(firebaseAuth, provider)
+            const response = await signInWithPopup(auth, provider)
             if (!response.user) throw new Error('Could not complete registration')
         },
         async logIn({ email, password }) {
             if (!email || !password) throw new Error('Email and password are required')
             if (this.user.loggedIn) throw new Error('You are already logged in')
 
-            const response = await signInWithEmailAndPassword(firebaseAuth, email, password)
+            const response = await signInWithEmailAndPassword(auth, email, password)
             if (!response.user) throw new Error('Could not complete login')
 
             this.setLoggedIn(true)
@@ -43,17 +43,18 @@ export const useAuthStore = defineStore({
         },
         async googleLogin() {
             const provider = new GoogleAuthProvider()
-            const response = await signInWithPopup(firebaseAuth, provider)
+            const response = await signInWithPopup(auth, provider)
             if (!response.user) throw new Error('Could not complete login')
 
             this.setLoggedIn(true)
             this.setUser(response.user)
+            router.push({ name: 'Home' })
         },
         async logOut() {
             try {
                 this.setLoggedIn(false)
                 this.setUser({})
-                await signOut(firebaseAuth)
+                await signOut(auth)
                 router.push({ name: 'Home' })
             } catch (error) {
                 console.log(error)

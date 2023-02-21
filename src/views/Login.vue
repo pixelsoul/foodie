@@ -5,10 +5,10 @@ import Layout from "../layouts/DefaultLayout.vue";
 
 <template>
     <Layout>
-        <v-row align="center" justify="center">
-            <v-col>
+        <div class="flex flex-col">
+            <div>
                 <LoginForm />
-            </v-col>
-        </v-row>
+            </div>
+        </div>
     </Layout>
 </template>

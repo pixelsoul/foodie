@@ -39,6 +39,14 @@ const routes = [
             requiresAuth: false
         }
     },
+    {
+        path: "/recipe/:id",
+        name: "Recipe",
+        component: () => import("../views/Recipe.vue"),
+        meta: {
+            requiresAuth: false
+        }
+    },
 ];
 
 const router = createRouter({

@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useAuthStore } from "../store/auth";
 import { useRouter } from "vue-router";
+import Button from "./Button.vue";
 
 const auth = useAuthStore();
 const router = useRouter();
@@ -24,26 +25,30 @@ const appTitle = import.meta.env.VITE_APP_TITLE || "";
 //     }
 // };
 
-const googleLogin = async () => {
-    try {
-        await auth.googleLogin();
-        router.push({ name: "Home" });
-    } catch (err) {
-        error.value = err.message;
-        console.log(err);
-    }
-};
+// const googleLogin = async () => {
+//     try {
+//         await auth.googleLogin();
+//         router.push({ name: "Home" });
+//     } catch (err) {
+//         error.value = err.message;
+//         console.log(err);
+//     }
+// };
 </script>
 
 <template>
     <div class="">
         <div class="flex-col border p-5">
-            <button
-                @click="googleLogin"
+            <!-- <button
+                @click="auth.googleLogin"
                 class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             >
                 Continue with Google
-            </button>
+            </button> -->
+
+            <Button @click="auth.googleLogin">
+                Continue with Google
+            </Button>
         </div>
     </div>
 </template>

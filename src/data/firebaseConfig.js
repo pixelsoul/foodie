@@ -3,7 +3,8 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
-const firebaseConfig = {
+
+const config = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
@@ -15,12 +16,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebase = initializeApp(firebaseConfig)
-const firebaseDb = getFirestore(firebase)
-const firebaseStorage = getStorage(firebase)
+const firebase = initializeApp(config)
 
-//initialize firebase auth
-const firebaseAuth = getAuth()
+// Initialize Firebase services
+const auth = getAuth(firebase)
+const db = getFirestore(firebase)
+const storage = getStorage(firebase)
 
 firebase.getCurrentUser = () => {
     return new Promise((resolve, reject) => {
@@ -31,4 +32,4 @@ firebase.getCurrentUser = () => {
     })
 };
 
-export { firebase, firebaseAuth, firebaseDb, firebaseStorage };
+export { firebase, auth, db, storage };
