@@ -36,6 +36,7 @@ export const useRecipesStore = defineStore({
         },
         async fetchRecipe(id) {
             this.setLoading(true)
+            this.setRecipe({})
             try {
                 const recipe = doc(db, 'recipes', id)
                 const response = await getDoc(recipe)
