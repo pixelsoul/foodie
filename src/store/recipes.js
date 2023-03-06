@@ -93,6 +93,27 @@ export const useRecipesStore = defineStore({
                 this.setLoading(false)
             }
         },
+        async likeRecipe(id) {
+            this.setLoading(true)
+            try {
+                const recipe = doc(db, 'recipes', id)
+                const response = await getDoc(recipe)
+                if (response.exists()) {
+                    const data = { ...response.data(), id: response.id }
+                    const likes = data.likes + 1
+                    await db.ref(`recipes/${id}`).update({ likes })
+                    this.fetchRecipes()
+                } else {
+                    console.log('No such document!')
+                }
+            }
+            catch (error) {
+                this.setError(error)
+            }
+            finally {
+                this.setLoading(false)
+            }
+        },
         setRecipes(recipes) {
             this.recipes = recipes
         },

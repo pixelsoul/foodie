@@ -22,6 +22,8 @@ onMounted(getRecipe);
                     <div v-if="store.recipe.id">
                         <h1>{{ store.recipe.title }}</h1>
                         <p>{{ store.recipe.description }}</p>
+                        <p>{{ store.recipe.tags }}</p>
+                        <p>{{ store.recipe.ingredients }}</p>
                     </div>
                     <div v-else>
                         <p>Recipe not found</p>

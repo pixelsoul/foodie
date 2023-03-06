@@ -1,6 +1,7 @@
 <script setup>
 import { useAuthStore } from "../store/auth";
 import UserDropdown from "../components/UserDropdown.vue";
+import Logo from "../components/FoodieLogo.vue";
 
 const auth = useAuthStore();
 
@@ -22,16 +23,18 @@ const props = defineProps({
             flex-wrap
             items-center
             justify-between
-            py-3
-            px-3
-            bg-gray-700
-            text-gray-500
-            h-16
+            py-1
+            px-1
+            mb-3
+            h-auto
             min-h-16
+            border-b-2
         "
     >
         <div>
-            <h1>{{ title }}</h1>
+            <router-link to="/" class="text-xl font-bold text-white">
+                <Logo :alt="title" />
+            </router-link>
         </div>
 
         <div

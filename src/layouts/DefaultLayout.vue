@@ -3,7 +3,7 @@ import HeaderNav from "./_HeaderNav.vue";
 </script>
 
 <template>
-    <div>
+    <div class="mx-3">
         <HeaderNav />
         <slot></slot>
     </div>
