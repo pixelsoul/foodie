@@ -3,6 +3,7 @@ import { onMounted } from "vue";
 import Layout from "../layouts/DefaultLayout.vue";
 import { useRouter } from "vue-router";
 import { useRecipesStore } from "../store/recipes";
+import Header from "../components/PageHeader.vue";
 
 const router = useRouter();
 const store = useRecipesStore();
@@ -21,7 +22,7 @@ onMounted(getRecipes);
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>{{ pageTitle }}</h1>
+                    <Header :headerText="pageTitle" />
                     <ul>
                         <li
                             v-for="recipe in store.recipes"

@@ -1,6 +1,7 @@
 <script setup>
 import Layout from "../layouts/DefaultLayout.vue";
 import { useRouter } from "vue-router";
+import Header from "../components/PageHeader.vue";
 
 const router = useRouter();
 
@@ -12,7 +13,7 @@ const pageTitle = router.currentRoute.value.name;
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>{{ pageTitle }}</h1>
+                    <Header :headerText="pageTitle" />
                 </div>
             </div>
         </div>

@@ -19,8 +19,7 @@ const props = defineProps({
         className="
             relative
             w-full
-            flex 
-            flex-wrap
+            flex
             items-center
             justify-between
             py-1
@@ -28,7 +27,6 @@ const props = defineProps({
             mb-3
             h-auto
             min-h-16
-            border-b-2
         "
     >
         <div>
@@ -40,15 +38,23 @@ const props = defineProps({
         <div
             className="
                 flex
-                flex-wrap
-                items-left
-                justify-left
-                text-base
+                w-full
+                justify-center
                 md:ml-auto
                 md:mr-auto
+                space-x-4
             "
         >
-            <router-link to="/recipes" class="">Recipes</router-link>
+            <router-link
+                to="/recipes"
+                class="text-foodie-brown dark:text-white"
+                >Recipes</router-link
+            >
+            <router-link
+                to="/favorites"
+                class="text-foodie-brown dark:text-white"
+                >Favorites</router-link
+            >
         </div>
 
         <template v-if="!auth.user.loggedIn">

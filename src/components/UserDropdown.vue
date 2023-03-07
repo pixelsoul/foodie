@@ -33,12 +33,12 @@ window.addEventListener("keydown", handleEscape);
     <ul class="userMenu">
         <li class="relative" tabindex="0">
             <button
-                class="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                class="max-w-xs bg-white rounded-full flex items-center text-sm focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500"
                 @click="toggleDropdown"
             >
                 <div class="flex-shrink-0">
                     <img
-                        class="h-10 w-10 rounded-full border-white-500 border-2"
+                        class="h-10 w-10 rounded-full border-white-500 border-3"
                         :src="
                             auth.user.data.photoURL ||
                             'https://ui-avatars.com/api/?name=' +
@@ -46,12 +46,6 @@ window.addEventListener("keydown", handleEscape);
                         "
                         alt=""
                     />
-                </div>
-                <div class="ml-3 mr-3">
-                    <div class="text-base font-medium text-gray-800">
-                        {{ auth.user.data.displayName }}
-                    </div>
-                    <div class="text-sm font-medium text-gray-500"></div>
                 </div>
             </button>
         </li>
