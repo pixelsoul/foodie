@@ -19,27 +19,18 @@ onMounted(getRecipe);
 
 <template>
     <Layout>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div v-if="store.recipe.id">
-                        <Header :headerText="store.recipe.title" />
-                        <p>{{ store.recipe.description }}</p>
-                        <Tags :tags="store.recipe.tags" />
-                        <Card header="Ingredients">
-                            <ul
-                                v-for="(ingredient, key) in store.recipe
-                                    .ingredients"
-                            >
-                                <li>{{ ingredient }}</li>
-                            </ul>
-                        </Card>
-                    </div>
-                    <div v-else>
-                        <p>Recipe not found</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Header :headerText="store.recipe.title" />
+        <p>{{ store.recipe.description }}</p>
+        <Tags :tags="store.recipe.tags" />
+
+        <template v-slot:aside>
+            <Card header="Ingredients">
+                <ul v-for="(ingredient, key) in store.recipe.ingredients">
+                    <li class="py-1 border-b-2 border-dotted">
+                        {{ ingredient }}
+                    </li>
+                </ul>
+            </Card>
+        </template>
     </Layout>
 </template>
