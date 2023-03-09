@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useRecipesStore } from "../store/recipes";
 import { useAuthStore } from "../store/auth";
@@ -24,11 +24,7 @@ onMounted(getRecipe);
             <div>
                 <RecipeHeader
                     :text="store.recipe.title"
-                    :image="
-                        store.recipe.image
-                            ? store.recipe.image
-                            : 'https://via.placeholder.com/150'
-                    "
+                    :image="store.recipe.image || ''"
                     :tags="store.recipe.tags"
                 />
             </div>

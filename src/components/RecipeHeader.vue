@@ -20,7 +20,8 @@ const props = defineProps({
 
 <template>
     <div
-        :class="` h-84 mb-5 flex rounded-md overflow-hidden relative bg-cover bg-center bg-no-repeat bg-[url('${image}')] -z-10`"
+        :class="` h-84 mb-5 flex rounded-md overflow-hidden relative bg-cover bg-center bg-no-repeat -z-10`"
+        :style="`background-image: url('${image}');`"
     >
         <div
             class="absolute inset-0 bg-black bg-opacity-20 bg-gradient-to-t from-gray-900 to-transparent h-128"
