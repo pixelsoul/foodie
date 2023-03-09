@@ -1,15 +1,13 @@
 <script setup>
-import { defineProps } from "vue";
-
 const props = defineProps({
-    headerText: {
+    text: {
         type: String,
         required: false,
         default: "",
     },
 });
 
-const headerText = props.headerText;
+const headerText = props.text;
 </script>
 
 <template>

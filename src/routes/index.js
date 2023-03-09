@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from '../store/auth'
+import nProgress from "nprogress";
 
 const routes = [
     {
@@ -47,15 +48,29 @@ const routes = [
             requiresAuth: false
         }
     },
+    {
+        path: "/:pathMatch(.*)*",
+        name: "NotFound",
+        component: () => import("../views/NotFound.vue"),
+        meta: {
+            requiresAuth: false
+        }
+    }
 ];
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.VITE_BASE_URL),
+    base: import.meta.env.VITE_BASE_URL,
     mode: 'history',
     routes,
 });
 
 router.beforeEach((to) => {
+
+    // start progress bar
+    nProgress.start();
+    nProgress.set(0.4);
+
     // check if route requires auth
     if (to.meta.requiresAuth && !useAuthStore().user.loggedIn) {
         router.push({ name: 'Login' });
@@ -69,6 +84,14 @@ router.beforeEach((to) => {
     if (to.name) {
         document.title = to.name + ' - ' + import.meta.env.VITE_APP_TITLE;
     }
+
+});
+
+router.afterEach(() => {
+    // finish progress bar
+    setTimeout(() => {
+        nProgress.done()
+    }, 500);
 
 });
 

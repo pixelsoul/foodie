@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
 
         <div class="container mx-auto h-full">
             <div class="flex flex-row flex-wrap py-4">
-                <header class="w-full">
+                <header class="w-full pt-1 px-2">
                     <slot name="header"></slot>
                 </header>
 
@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
 
         <footer class="mt-auto">
             <slot name="footer">
-                <div class="bg-foodie-brown text-foodie-white p-4">
+                <div class="text-foodie-brown p-4">
                     <p class="text-center">
                         &copy; {{ year }} Foodie. All rights reserved.
                     </p>

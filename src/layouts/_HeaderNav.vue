@@ -39,10 +39,12 @@ const props = defineProps({
             className="
                 flex
                 w-full
-                justify-center
+                justify-left
                 md:ml-auto
                 md:mr-auto
                 space-x-4
+                pl-5
+                pr-5
             "
         >
             <router-link

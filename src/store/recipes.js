@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { db } from '../data/firebaseConfig'
 import { collection, getDocs, getDoc, doc, query, where } from 'firebase/firestore'
+import router from '../routes'
 
 export const useRecipesStore = defineStore({
     id: "recipes",
@@ -45,6 +46,7 @@ export const useRecipesStore = defineStore({
                     this.setRecipe(data)
                 } else {
                     console.log('No such document!')
+                    router.push({ name: 'NotFound' })
                 }
             }
             catch (error) {

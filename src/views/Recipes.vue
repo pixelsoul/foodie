@@ -22,7 +22,7 @@ onMounted(getRecipes);
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <Header :headerText="pageTitle" />
+                    <Header :text="pageTitle" />
                     <ul>
                         <li
                             v-for="recipe in store.recipes"

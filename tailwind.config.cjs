@@ -27,6 +27,8 @@ module.exports = {
         'foodie-dark-brown': '#221909',
         'foodie-dark-brown-2': '#291e0b',
         'foodie-white': '#FEFEFE',
+        'darkish': '#323545',
+        'cool-orange': '#EA6B4A',
       },
       spacing: {
         '72': '18rem',

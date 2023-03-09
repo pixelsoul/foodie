@@ -10,12 +10,6 @@ const pageTitle = router.currentRoute.value.name;
 
 <template>
     <Layout>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <Header :text="pageTitle" />
-                </div>
-            </div>
-        </div>
+        <Header :text="pageTitle" />
     </Layout>
 </template>
