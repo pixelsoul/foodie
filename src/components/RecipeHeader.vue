@@ -24,16 +24,15 @@ const props = defineProps({
         :style="`background-image: url('${image}');`"
     >
         <div
-            class="absolute inset-0 bg-black bg-opacity-20 bg-gradient-to-t from-gray-900 to-transparent h-128"
+            class="absolute inset-0 bg-black bg-opacity-10 bg-gradient-to-t from-gray-900 to-transparent h-full w-full -z-10"
         ></div>
-        <div
-            class="absolute inset-0 flex-col justify-left left-0 w-full h-full px-5 text-white top-60"
-        >
-            <h1 class="text-4xl text-white">{{ text }}</h1>
-            <div class="flex flex-wrap">
-                <template v-for="(tag, index) in tags" :key="index">
-                    <div
-                        className="
+        <div class="flex items-end justify-left h-full w-full">
+            <div class="inset-0 px-5 text-white mb-5">
+                <h1 class="text-4xl text-white pb-2">{{ text }}</h1>
+                <div class="flex flex-wrap">
+                    <template v-for="(tag, index) in tags" :key="index">
+                        <div
+                            className="
                             bg-foodie-brown
                             text-white
                             rounded-full
@@ -44,10 +43,11 @@ const props = defineProps({
                             mr-2
                             mb-2
                         "
-                    >
-                        {{ tag }}
-                    </div>
-                </template>
+                        >
+                            {{ tag }}
+                        </div>
+                    </template>
+                </div>
             </div>
         </div>
     </div>
