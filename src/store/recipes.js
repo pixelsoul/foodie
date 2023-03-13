@@ -35,6 +35,78 @@ export const useRecipesStore = defineStore({
                 this.setLoading(false)
             }
         },
+        async fetchRecipesByUser(userId) {
+            this.setLoading(true)
+            this.setRecipes([])
+            try {
+                const q = query(collection(db, 'recipes'), where('userId', '==', userId))
+                const response = await getDocs(q)
+                response.forEach(doc => {
+                    const recipe = { ...doc.data(), id: doc.id }
+                    this.recipes.push(recipe)
+                })
+            }
+            catch (error) {
+                this.setError(error)
+            }
+            finally {
+                this.setLoading(false)
+            }
+        },
+        async fetchRecipesByCategory(category) {
+            this.setLoading(true)
+            this.setRecipes([])
+            try {
+                const q = query(collection(db, 'recipes'), where('category', '==', category))
+                const response = await getDocs(q)
+                response.forEach(doc => {
+                    const recipe = { ...doc.data(), id: doc.id }
+                    this.recipes.push(recipe)
+                })
+            }
+            catch (error) {
+                this.setError(error)
+            }
+            finally {
+                this.setLoading(false)
+            }
+        },
+        async fetchRecipesBySearch(search) {
+            this.setLoading(true)
+            this.setRecipes([])
+            try {
+                const q = query(collection(db, 'recipes'), where('title', '>=', search))
+                const response = await getDocs(q)
+                response.forEach(doc => {
+                    const recipe = { ...doc.data(), id: doc.id }
+                    this.recipes.push(recipe)
+                })
+            }
+            catch (error) {
+                this.setError(error)
+            }
+            finally {
+                this.setLoading(false)
+            }
+        },
+        async fetchRecipesByTag(tag) {
+            this.setLoading(true)
+            this.setRecipes([])
+            try {
+                const q = query(collection(db, 'recipes'), where('tags', 'array-contains', tag))
+                const response = await getDocs(q)
+                response.forEach(doc => {
+                    const recipe = { ...doc.data(), id: doc.id }
+                    this.recipes.push(recipe)
+                })
+            }
+            catch (error) {
+                this.setError(error)
+            }
+            finally {
+                this.setLoading(false)
+            }
+        },
         async fetchRecipe(id) {
             this.setLoading(true)
             this.setRecipe({})

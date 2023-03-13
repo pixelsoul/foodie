@@ -21,7 +21,11 @@ const year = new Date().getFullYear();
                     <slot></slot>
                 </main>
 
-                <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
+                <!-- if aside slot -->
+                <aside
+                    class="w-full sm:w-1/3 md:w-1/4 px-2"
+                    v-if="$slots.aside"
+                >
                     <slot name="aside"></slot>
                 </aside>
             </div>
